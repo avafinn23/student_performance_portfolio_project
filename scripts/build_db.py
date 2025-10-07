@@ -15,12 +15,12 @@ print("Script root:   ", ROOT)
 print("CSV path:      ", CSV)
 print("DB path:       ", DB)
 
-# 1) Check CSV exists
+
 if not CSV.exists():
     print("CSV not found at:", CSV)
     sys.exit(1)
 
-# 2) Load CSV
+
 try:
     df = pd.read_csv(CSV)
 except Exception as e:
@@ -29,7 +29,7 @@ except Exception as e:
 
 print(f" Loaded CSV with {len(df):,} rows and {len(df.columns)} columns.")
 
-# 3) Write to SQLite
+
 try:
     DB.parent.mkdir(parents=True, exist_ok=True)
     with sqlite3.connect(DB) as conn:
